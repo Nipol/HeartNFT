@@ -1,6 +1,39 @@
 [profile.default]
+solc = '0.8.17'
+via_ir = true
 src = 'src'
 out = 'out'
 libs = ['lib']
+optimizer = true
+optimizer_runs = 4_294_967_295
+extra_output = ["evm.assembly", "irOptimized", "devdoc"]
+gas_reports = ["HeartNFT"]
+remappings = [
+    'forge-std/=lib/forge-std/src/',
+    'ERC721/=lib/ERC721yul/src',
+]
+
+[profile.default.optimizer_details]
+peephole = true
+inliner = true
+jumpdestRemover = true
+orderLiterals = true
+deduplicate = true
+cse = true
+constantOptimizer = true
+yul = true
+
+[profile.default.optimizer_details.yulDetails]
+stackAllocation = true
+optimizerSteps = "dhfoDgvulfnTUtnIf[xa[r]EscLMcCTUtTOntnfDIulLculVcul [j]Tpeulxa[rul]xa[r]cLgvifCTUca[r]LSsTOtfDnca[r]Iulc]jmul[jul] VcTOcul jmul"
+
+[fuzz]
+runs = 5000
+max_test_rejects = 2_000_000
+
+[fmt]
+line_length = 120
+tab_width = 4
+bracket_spacing = true
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
